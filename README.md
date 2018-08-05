@@ -4,7 +4,7 @@ A small shell script that allows an automatic update of domain record when havin
 What you need:
  - Active domain in GoDaddy(tm) service (visit www.godaddy.com to get one)
  - UNIX/Linux server that runs locally behind a dynamic IP Address
- - A service/task scheduler or something that you can schedule this script (for example Cron)
+ - A service/task scheduler or something that you can schedule this script with (for example Cron https://en.wikipedia.org/wiki/Cron)
  
  Using instructions
  1. To begin, put this script to a folder you have your user rights (for example create a new dir inside your home dir and put it there)
