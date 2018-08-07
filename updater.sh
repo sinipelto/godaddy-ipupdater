@@ -16,14 +16,14 @@ writelog ()
 	logfile=$logpath/$date.log
 
 	# If logdir not found, create one
-	if [ ! -d $logpath ]; 
+	if [ ! -d $logpath ];
 	then
 		mkdir $logpath
 		chmod 740 $logpath
 	fi
 
 	# Check for log file
-	if [ ! -s $logfile ]; 
+	if [ ! -s $logfile ];
 	then
 		touch $logfile
 		chmod 640 $logfile
@@ -84,8 +84,11 @@ WILD_url="$base_url/$domain/records/A/*"
 writelog "Getting external ip..."
 ip=$(curl -X GET $ip_url)
 
-# Check for errors in IP
-if [ $ip = "" ];
+# Trim whitespace
+trimmed_ip=$(echo $ip | xargs)
+
+# Check if IP is empty
+if [ -z "$trimmed_ip" ];
 then
 	writelog "Error while getting IP, value was empty. Exiting..."
 	exitapp 1
@@ -99,7 +102,7 @@ then
 	chmod 600 $ip_path
 	lastip="NULL"
 
-elif [ $ip = $lastip ];
+elif [ "$ip" = "$lastip" ];
 then
 	writelog "IP not changed from last, exiting..."
 	exitapp 0
@@ -133,7 +136,7 @@ putres1=$?
 curl -X PUT -H "Content-type: application/json" -H "Authorization: sso-key $apikeys" -d $result $WILD_url
 putres2=$?
 
-if [ ! $putres1 -eq 0 ] || [ ! $putres2 -eq 0 ]; 
+if [ ! $putres1 -eq 0 ] || [ ! $putres2 -eq 0 ];
 then
 	writelog "Error in PUT(s)! Send failed!"
 	exitapp 1
