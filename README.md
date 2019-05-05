@@ -1,4 +1,6 @@
 # godaddy-ipupdater
+**DEPRECATED**: Please use the C++ version here: [IP Updater C++](https://github.com/Sinipelto/ipupdater-cpp).
+
 A small shell script that allows an automatic update of domain record when having a dynamic IP. This needs a active domain name owned on GoDaddy(tm) domain service and a linux-based server to run on. It uses GoDaddy(tm) domain API to update the record.
 
 What you need:
@@ -16,5 +18,4 @@ What you need:
  5. Check the logs and ensure that the script ran correctly (there should be no errors)
  6. Add a scheduled task that runs the script periodically to upkeep your latest ip in the domain record
  
- (c) 2018 Sinipelto
- 
+ **(c) 2018 Sinipelto**
